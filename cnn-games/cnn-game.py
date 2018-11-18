@@ -19,8 +19,6 @@ tf.logging.set_verbosity(tf.logging.INFO)
 
 # Functions must be created this way as this is used to create the learning model.
 def cnn_network_fn(features, labels, mode):
-    print("Creating the neural network defintions.")
-
     # input to our model. Defines a tensor which is a set of input node values.
     input_layer = tf.reshape(features["x"], [-1, 28, 28, 1])
 
@@ -40,7 +38,6 @@ def cnn_network_fn(features, labels, mode):
     dropout = tf.layers.dropout(
     inputs=dense, rate=0.4, training=mode == tf.estimator.ModeKeys.TRAIN)
 
-    
     # the network output layer.
     logits = tf.layers.dense(inputs=dropout, units=10)
 
@@ -61,6 +58,7 @@ def cnn_network_fn(features, labels, mode):
     loss = tf.losses.sparse_softmax_cross_entropy(labels=labels, logits=logits)
 
       # Configure the Training Op (for TRAIN mode)
+      # Trainop - The operator that you want to use for traning.
     if mode == tf.estimator.ModeKeys.TRAIN:
         optimizer = tf.train.GradientDescentOptimizer(learning_rate=0.001)
         train_op = optimizer.minimize(
@@ -71,14 +69,14 @@ def cnn_network_fn(features, labels, mode):
       # Add evaluation metrics (for EVAL mode)
     eval_metric_ops = {
           "accuracy": tf.metrics.accuracy(
-              labels=labels, predictions=predictions["classes"])}
+              labels=labels, predictions=predictions["classes"])
+          }
     return tf.estimator.EstimatorSpec(
           mode=mode, loss=loss, eval_metric_ops=eval_metric_ops)
 
 
 # tensorflow notes - tf.app.run() looks for main(argv) entry point. Must define one.
 def main(unused_argv):
-    print("Hello world. How are you today.")
     mnist = tf.contrib.learn.datasets.load_dataset("mnist")
 
     # Input data and properties for training. 
@@ -94,14 +92,23 @@ def main(unused_argv):
 
     # Create handle for input data and then train the model.
     train_input_fn = tf.estimator.inputs.numpy_input_fn(
-        x={"x": eval_data},
-        y=eval_labels,
+        x={"x": train_data},
+        y=train_labels,
         num_epochs=1,
         shuffle=False
         )
     classifier.train(input_fn=train_input_fn,
                      steps=20000)
-    
+
+    eval_input_fn = tf.estimator.inputs.numpy_input_fn(
+        x={"x":eval_data},
+        y=eval_labels,
+        num_epochs=1,
+        shuffle=True
+        )
+    eval_result = classifier.evaluate(input_fn=eval_input_fn, steps=20000)
+
+    print(eval_result)
 
 if __name__ == "__main__":
     tf.app.run() # Defines entrypoint for a tensorflow app.
