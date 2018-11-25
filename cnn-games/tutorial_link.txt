@@ -1,0 +1,4 @@
+https://cv-tricks.com/tensorflow-tutorial/training-convolutional-neural-network-for-image-classification/
+
+- This is the tutorial I am using.
+
