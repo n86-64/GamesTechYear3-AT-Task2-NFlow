@@ -33,16 +33,33 @@ def createBias(size):
     return tf.Variable(tf.constant(bias, shape=[size]))
 
 # Create a convolutional layer
-def createConv2DLayer(input, inputChannelCount, kernelSize, filterCount):
-    return
+def createConv2DLayer(input, inputChannelCount, filterSize, filterCount):
+
+    # Defines the weights for the filters and 
+    weights = createWeights(shape=[filterSize, filterSize, inputChannelCount, filterCount])
+    bias = createBias(filterCount)
+
+    layer = tf.nn.conv2D(input=input, filter=weights, strides=[1, 1, 1, 1], padding='SAME')
+    layer += bias
+
+    layer = tf.nn.max_pool(value=layer, ksize=[1, 2, 2, 1], strides=[1, 2, 2, 1], padding='SAME')
+    return layer
 
 # Create a fully connected layer.
-def createConnectedLayer(input, inputChannelCount, kernelSize, filterCount):
-    return
+def createConnectedLayer(input, numInputs, numOutputs):
+
+    weights = createWeights(shape=[numInputs, numOutputs])
+    bias = createBias(num_outputs)
+
+    layer = tf.nn.relu_layer(input)
+    
+    return layer
 
 def main():
     # TODO - Load the test data in form an image loading library.
     # TODO - Add some code to define the network.
+
+    
 
     print("Hello world")
 

@@ -5,8 +5,11 @@
 
 
 # Dependancies.
+import data as t
+import zipfile
 import tensorflow as tf
 import numpy as np
+
 
 tf.logging.set_verbosity(tf.logging.INFO)
 
@@ -109,6 +112,7 @@ def main(unused_argv):
     eval_result = classifier.evaluate(input_fn=eval_input_fn, steps=20000)
 
     print(eval_result)
+    
 
 if __name__ == "__main__":
     tf.app.run() # Defines entrypoint for a tensorflow app.
