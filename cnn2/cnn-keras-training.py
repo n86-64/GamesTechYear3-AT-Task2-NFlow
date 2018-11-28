@@ -11,6 +11,7 @@ import tensorflow as tf
 import numpy as np
 
 # code to import labels.
+# Todo - add routiene to customise batch size.
 label_names = sys.argv[1]
 
 class_names = open(label_names).readlines()
@@ -35,16 +36,18 @@ def createClassifier(image_width, image_height, channels, batch_c):
     network = tf.keras.layers.Flatten()(network)
     
     model = tf.keras.Model(inputs=model_input, outputs=network)
+
+    model.summery()
     
     return model
 
 def main():
     print("Tensorflow: " + tf.VERSION)
-    train_data = dl.loadTraningData(label_name="test.txt")
+    train_data = dl.loadTraningData(label_names=["Cars", "Guns", "Airplane"], image_width=50, image_height=50)
     print(train_data)
     
    # cnn = createClassifier(image_width=50, image_height=50, channels=3, batch_c=5)
-  #  optimiser = createOptimiser()
+   # optimiser = createOptimiser()
 
     
     return

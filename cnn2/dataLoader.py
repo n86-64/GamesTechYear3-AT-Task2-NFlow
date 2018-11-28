@@ -24,21 +24,25 @@ train_data_path = os.path.join(os.path.dirname(__file__), "traning_data\\")
 # This returns a 2D numpy array containing raning images and
 # labels. 
 # image = [np.array(img), label(i)]
-def loadTraningData(label_names[], image_width, image_height):
-    traning_data = [,]
+def loadTraningData(label_names, image_width, image_height):
+    training_data = []
+    training_labels = []
 
     for name in label_names:
         # Create a destination file path.
         path = os.path.join(train_data_path, name + "\\")
-        images = glob(path, "*.jpg")
-        images += glob(path, "*.png")
+        images = glob(os.path.join(path, "*.jpg"))
+        images += glob(os.path.join(path, "*.png"))
 
         # load the images into the array.
         for image in images:
             image_texture = cv2.imread(image)
             loaded_texture = cv2.resize(image_texture, (image_width, image_height), interpolation=cv2.INTER_CUBIC)
-            training_data.append(loaded_texture, name)
+            training_data.append(loaded_texture)
+            training_labels.append(name)
+
+    print(training_data)
+    print(training_labels)
     
-    
-    return traning_data
+    return training_data, training_labels
     
