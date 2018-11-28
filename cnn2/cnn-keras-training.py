@@ -23,7 +23,7 @@ def createOptimiser():
 
 def createClassifier(image_width, image_height, channels, batch_c):
     input_shape = (image_width, image_height, channels)
-    model_input = tf.keras.layers.Input(shape=input_shape, batch_size=batch_c)
+    model_input = tf.keras.layers.Input(shape=input_shape)
 
     # Defines the elements of the model.
     network = tf.keras.layers.Conv2D(filters=32, kernel_size=5, strides=1, padding='same', activation='relu')(model_input)
@@ -54,19 +54,20 @@ def main():
     print("Tensorflow: " + tf.VERSION)
 
     training_data, training_labels = dl.loadTraningData(label_names=class_names, image_width=50, image_height=50)
+   # tr_data = training_data.reshape(training_data[0], 50, 50, 3)
 
     # create the neural netowrking model and optimiser.
     cnn = createClassifier(image_width=50, image_height=50, channels=3, batch_c=5)
     optimiser = createOptimiser()
 
     #print(training_data.shape)
-    #training_labels_categories = tf.keras.utils.to_categorical(training_labels, class_names_length)
+   # training_labels_categories = tf.keras.utils.to_categorical(training_data, class_names_length)
     
     
     # Compile the model and train.
     cnn.compile(optimiser, loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
-    cnn.fit(training_data, training_labels, epochs=5)
+    cnn.fit(training_data, training_labels, epochs=5000)
     
     
     return
