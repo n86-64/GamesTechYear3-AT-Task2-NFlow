@@ -28,7 +28,7 @@ def createClassifier(image_width, image_height, channels, batch_c):
     network = tf.keras.layers.Conv2D(filters=32, kernel_size=5, strides=1, padding='same', activation='relu')(model_input)
     network = tf.keras.layers.MaxPool2D(pool_size=5, padding='same')(network)
 
-    network = tf.keras.layers.Conv2D(filters=50, kernel_size=5, strides=1, padding='same', activation='relu')(network)
+    network = tf.keras.layers.Conv2D(filters=64, kernel_size=5, strides=1, padding='same', activation='relu')(network)
     network = tf.keras.layers.MaxPool2D(pool_size=5, padding='same')(network)
 
     network = tf.keras.layers.Dropout(0.25)(network)
@@ -39,9 +39,12 @@ def createClassifier(image_width, image_height, channels, batch_c):
     return model
 
 def main():
-    print(tf.VERSION)
-    cnn = createClassifier(image_width=50, image_height=50, channels=3, batch_c=5)
-    optimiser = createOptimiser()
+    print("Tensorflow: " + tf.VERSION)
+    train_data = dl.loadTraningData(label_name="test.txt")
+    print(train_data)
+    
+   # cnn = createClassifier(image_width=50, image_height=50, channels=3, batch_c=5)
+  #  optimiser = createOptimiser()
 
     
     return
