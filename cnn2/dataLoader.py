@@ -39,7 +39,7 @@ def loadTraningData(label_names, image_width, image_height):
         for image in images:
             image_texture = cv2.imread(image)
             loaded_texture = cv2.resize(image_texture, (image_width, image_height), interpolation=cv2.INTER_CUBIC)
-            training_data.append(loaded_texture)
+            training_data.append(np.array(loaded_texture), label_id)
             training_labels.append(label_id)
 
         label_id += 1
