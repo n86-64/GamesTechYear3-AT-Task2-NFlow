@@ -13,6 +13,7 @@ import numpy as np
 # code to import labels.
 # Todo - add routiene to customise batch size.
 label_names = sys.argv[1]
+epochs = sys.argv[2]
 
 class_names = open(label_names).readlines()
 class_names = [x.strip('\n') for x in class_names]
@@ -30,7 +31,7 @@ def createClassifier(image_width, image_height, channels, batch_c):
     network = tf.keras.layers.MaxPool2D(pool_size=5, padding='same')(network)
 
     network = tf.keras.layers.Conv2D(filters=50, kernel_size=5, strides=1, padding='same', activation='relu')(network)
-    network  = tf.keras.layers.MaxPool2D(pool_size=2, padding='same')(network)
+    network = tf.keras.layers.MaxPool2D(pool_size=2, padding='same')(network)
 
     network = tf.keras.layers.Conv2D(filters=80, kernel_size=5, strides=1, padding='same', activation='relu')(network)
     network = tf.keras.layers.MaxPool2D(pool_size=2, padding='same')(network)
@@ -54,22 +55,21 @@ def main():
     print("Tensorflow: " + tf.VERSION)
 
     training_data, training_labels = dl.loadTraningData(label_names=class_names, image_width=50, image_height=50)
-   # tr_data = training_data.reshape(training_data[0], 50, 50, 3)
 
     # create the neural netowrking model and optimiser.
     cnn = createClassifier(image_width=50, image_height=50, channels=3, batch_c=5)
     optimiser = createOptimiser()
-
-    #print(training_data.shape)
-   # training_labels_categories = tf.keras.utils.to_categorical(training_data, class_names_length)
     
     
     # Compile the model and train.
     cnn.compile(optimiser, loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
-    cnn.fit(training_data, training_labels, epochs=5000)
-    
-    
+    cnn.fit(training_data, training_labels, epochs=50)
+
+    result = cnn.save("cnn-game.hd5") # Saves the resulting neural network.
+
+    print(result)
+
     return
 
 
