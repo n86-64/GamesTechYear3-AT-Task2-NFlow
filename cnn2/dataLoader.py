@@ -13,7 +13,7 @@ from glob import glob
 
 
 # Define filepaths
-train_data_path = os.path.join(os.path.dirname(__file__), "traning_data\\")
+train_data_path = os.path.join(os.path.dirname(__file__), "training_data\\")
 
 # Load a sequense of images and a sequense of labels.
 # These values will corrispond to our label name.
