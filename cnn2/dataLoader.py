@@ -58,5 +58,5 @@ def loadPredictionImage(image_path, image_width, image_height):
     image_texture = cv2.resize(image, (image_width, image_height), interpolation=cv2.INTER_CUBIC)
 
     # returns the image.
-    return image
+    return image_texture
     

@@ -5,6 +5,7 @@
 # Allows for some customisation.
 
 # Dependancies
+import os
 import sys
 import dataLoader as dl
 import tensorflow as tf
@@ -13,7 +14,7 @@ import numpy as np
 # code to import labels.
 # Todo - add routiene to customise batch size.
 label_names = sys.argv[1]
-epochs = sys.argv[2]
+epochs = int(sys.argv[2])
 
 class_names = open(label_names).readlines()
 class_names = [x.strip('\n') for x in class_names]
@@ -64,9 +65,16 @@ def main():
     # Compile the model and train.
     cnn.compile(optimiser, loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
-    cnn.fit(training_data, training_labels, epochs=50)
+    cnn.fit(training_data, training_labels, epochs=epochs)
 
     result = cnn.save("cnn-game.hd5") # Saves the resulting neural network.
+
+    model = tf.keras.models.load_model("cnn-game.hd5")
+
+    test_image = dl.loadPredictionImage(image_path=os.path.join(os.path.dirname(__file__), "test.png"), image_width=50, image_height=50)
+    data = np.array(test_image)
+    data.resize(1, 50, 50, 3)
+    result = model.predict(data)
 
     print(result)
 
