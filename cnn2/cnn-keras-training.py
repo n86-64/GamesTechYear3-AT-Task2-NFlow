@@ -11,8 +11,7 @@ import dataLoader as dl
 import tensorflow as tf
 import numpy as np
 
-# code to import labels.
-# Todo - add routiene to customise batch size.
+# Import Arguements for the network.
 label_names = sys.argv[1]
 epochs = int(sys.argv[2])
 
@@ -72,9 +71,7 @@ def main():
     model = tf.keras.models.load_model("cnn-game.hd5")
 
     test_image = dl.loadPredictionImage(image_path=os.path.join(os.path.dirname(__file__), "test.png"), image_width=50, image_height=50)
-    data = np.array(test_image)
-    data.resize(1, 50, 50, 3)
-    result = model.predict(data)
+    result = model.predict(test_image)
 
     print(result)
 
