@@ -21,7 +21,7 @@ public class Predictor : MonoBehaviour
 	}
 
     // Gets the predictions from the array.
-    public void getPredictions(string imageFile)
+    public string getPredictions(string imageFile)
     {
         // The pyhon process with supervising parameters.
         Process neuralNetwork = null;
@@ -30,7 +30,7 @@ public class Predictor : MonoBehaviour
         pyHandle.UseShellExecute = false;
         pyHandle.FileName = "python.exe";
         pyHandle.WindowStyle = ProcessWindowStyle.Normal;
-        pyHandle.Arguments = "D:\\Nflow\\cnn2\\cnn-prediction.py D:\\Nflow\\cnn2\\cnn-game.hd5 D:\\Nflow\\cnn2\\test.jpg";
+        pyHandle.Arguments = Application.dataPath + "/Externals/cnn-prediction.py D:/Nflow/cnn2/cnn-game.hd5 D:/Nflow/cnn2/test.jpg";
         pyHandle.RedirectStandardOutput = true;
 
         // Perform the traning.
@@ -39,6 +39,6 @@ public class Predictor : MonoBehaviour
         StreamReader reader = neuralNetwork.StandardOutput;
 
         // Get the output.
-        UnityEngine.Debug.Log(reader.ReadToEnd());
+        return reader.ReadToEnd();
     }
 }
