@@ -9,6 +9,8 @@ import os
 import tensorflow as tf
 import sys
 
+tf.logging.set_verbosity(tf.logging.ERROR)
+
 # Inputs - the model path and the image path.
 model_path = sys.argv[1]
 image_file_path = sys.argv[2]
