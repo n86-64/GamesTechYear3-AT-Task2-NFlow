@@ -14,7 +14,7 @@ public class Predictor : MonoBehaviour
 	void Start ()
     {
         //getPredictions("test.jpg");
-        // loadLabels("labels.txt");
+        loadLabels("labels.txt");
 	}
 
     // Load the labels file into memory.
