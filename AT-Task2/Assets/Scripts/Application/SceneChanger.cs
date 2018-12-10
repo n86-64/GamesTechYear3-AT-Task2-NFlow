@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Exit : MonoBehaviour
+public class SceneChanger : MonoBehaviour
 {
     public void quitApplication()
     {
@@ -10,4 +10,9 @@ public class Exit : MonoBehaviour
         Debug.Log("Exiting Mate.");
     }
 
+
+    public void startGame()
+    {
+
+    }
 }
