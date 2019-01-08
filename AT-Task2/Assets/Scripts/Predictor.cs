@@ -79,7 +79,7 @@ public class Predictor : MonoBehaviour
         pyHandle.UseShellExecute = false;
         pyHandle.FileName = "python.exe";
         pyHandle.WindowStyle = ProcessWindowStyle.Normal;
-        pyHandle.Arguments = Application.dataPath + "/Externals/cnn-prediction.py D:/Nflow/cnn2/cnn-game.hd5 D:/Nflow/cnn2/test.jpg";
+        pyHandle.Arguments = Application.dataPath + "/Externals/cnn-prediction.py " + Application.dataPath + "//cnn-game.hd5 " + Application.dataPath + "//" + imageFile;
         pyHandle.RedirectStandardOutput = true;
 
         // Perform the traning.
