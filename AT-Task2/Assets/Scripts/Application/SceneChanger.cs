@@ -16,4 +16,9 @@ public class SceneChanger : MonoBehaviour
     {
         SceneManager.LoadScene("GeneratorScene");
     }
+
+    public void backToMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
 }

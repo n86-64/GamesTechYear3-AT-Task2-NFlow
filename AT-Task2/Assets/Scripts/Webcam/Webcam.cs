@@ -69,5 +69,6 @@ public class Webcam : MonoBehaviour {
         byte[] data = texture.EncodeToJPG();
         File.WriteAllBytes(Application.dataPath + "\\image.jpg", data);
         SceneManager.LoadScene("GenerationSummery");
+        webcamHandle.Stop();
     }
 }
