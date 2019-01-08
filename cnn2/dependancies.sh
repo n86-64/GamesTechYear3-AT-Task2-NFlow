@@ -1,2 +1,2 @@
 #!/bin/bash
-pip install --user opencv-python h5py
+pip3 install --user opencv-python h5py

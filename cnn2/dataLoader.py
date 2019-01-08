@@ -13,8 +13,8 @@ from glob import glob
 
 
 # Define filepaths
-train_data_path = os.path.join(os.path.dirname(__file__), "training_data\\")
-test_data_path = os.path.join(os.path.dirname(__file__), "testing_data\\")
+train_data_path = os.path.join(os.path.dirname(__file__), "training_data/")
+test_data_path = os.path.join(os.path.dirname(__file__), "testing_data/")
 
 # Load a sequense of images and a sequense of labels.
 # These values will corrispond to our label name.
@@ -26,23 +26,27 @@ test_data_path = os.path.join(os.path.dirname(__file__), "testing_data\\")
 # labels. 
 # image = [np.array(img), label(i)]
 def loadTraningData(label_names, image_width, image_height):
+    count = 0
     label_id = 0
     training_data = []
     training_labels = []
 
     for name in label_names:
+        count = 0
         # Create a destination file path.
-        path = os.path.join(train_data_path, name + "\\")
+        path = os.path.join(train_data_path, name + "/")
         images = glob(os.path.join(path, "*.jpg"))
         images += glob(os.path.join(path, "*.png"))
 
         # load the images into the array.
         for image in images:
+            count += 1
             image_texture = cv2.imread(image)
             loaded_texture = cv2.resize(image_texture, (image_width, image_height), interpolation=cv2.INTER_CUBIC)
             training_data.append(loaded_texture)
             training_labels.append(label_id)
 
+        print("Label: " + str(label_id) + " Image count: " + str(count))
         label_id += 1
 
     training_data   = np.array(training_data)
@@ -58,7 +62,7 @@ def loadTestingData(label_names, image_width, image_height):
 
     for name in label_names:
         # Create a destination file path.
-        path = os.path.join(test_data_path, name + "\\")
+        path = os.path.join(test_data_path, name + "/")
         images = glob(os.path.join(path, "*.jpg"))
         images += glob(os.path.join(path, "*.png"))
 

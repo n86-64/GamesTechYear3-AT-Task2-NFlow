@@ -64,16 +64,16 @@ def main():
     # Compile the model and train.
     cnn.compile(optimiser, loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
-    cnn.fit(training_data, training_labels, epochs=epochs)
+    cnn.fit(training_data, training_labels, batch_size=5, epochs=epochs)
 
     result = cnn.save("cnn-game.hd5") # Saves the resulting neural network.
 
-    model = tf.keras.models.load_model("cnn-game.hd5")
+ #   model = tf.keras.models.load_model("cnn-game.hd5")
 
-    test_image = dl.loadPredictionImage(image_path=os.path.join(os.path.dirname(__file__), "test.png"), image_width=50, image_height=50)
-    result = model.predict(test_image)
+  #  test_image = dl.loadPredictionImage(image_path=os.path.join(os.path.dirname(__file__), "test.png"), image_width=50, image_height=50)
+   # result = model.predict(test_image)
 
-    print(result)
+   # print(result)
 
     return
 
