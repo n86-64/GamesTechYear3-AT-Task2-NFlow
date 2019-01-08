@@ -65,6 +65,7 @@ def loadTestingData(label_names, image_width, image_height):
         # Create a destination file path.
         path = os.path.join(test_data_path, name + "/")
         images = glob(os.path.join(path, "*.jpg"))
+        images += glob(os.path.join(path, "*.jpeg"))
         images += glob(os.path.join(path, "*.png"))
 
         # load the images into the array.
