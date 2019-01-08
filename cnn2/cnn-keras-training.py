@@ -43,7 +43,7 @@ def createClassifier(image_width, image_height, channels, batch_c):
     network = tf.keras.layers.Dropout(0.5)(network)
 
     network = tf.keras.layers.Flatten()(network)
-    network = tf.keras.layers.Dense(class_names_length, activation='softmax')(network)
+    network = tf.keras.layers.Dense(class_names_length, activation='sigmoid')(network)
     
     model = tf.keras.Model(inputs=model_input, outputs=network)
 
@@ -55,6 +55,18 @@ def main():
     print("Tensorflow: " + tf.VERSION)
 
     training_data, training_labels = dl.loadTraningData(label_names=class_names, image_width=50, image_height=50)
+
+   # print(training_data)
+    #print(training_labels)
+
+    # TODO - Do we need this.
+    seed = np.arange(training_data.shape[0])
+    np.random.shuffle(seed)
+    training_data = training_data[seed]
+    training_labels = training_labels[seed]
+
+   # print(training_data)
+    #print(training_labels)
 
     # create the neural netowrking model and optimiser.
     cnn = createClassifier(image_width=50, image_height=50, channels=3, batch_c=5)
