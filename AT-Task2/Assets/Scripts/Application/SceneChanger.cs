@@ -18,7 +18,8 @@ public class SceneChanger : MonoBehaviour
 
     public void startLevel()
     {
-        // Here the map should be according to what map was chosen.
+        // Here the map should be chosen acording to the generated scene.
+
         SceneManager.LoadScene("Game Scene");
     }
 
