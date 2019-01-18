@@ -11,10 +11,15 @@ public class SceneChanger : MonoBehaviour
         Debug.Log("Exiting Mate.");
     }
 
-
     public void startGame()
     {
         SceneManager.LoadScene("GeneratorScene");
+    }
+
+    public void startLevel()
+    {
+        // Here the map should be according to what map was chosen.
+        SceneManager.LoadScene("Game Scene");
     }
 
     public void backToMenu()

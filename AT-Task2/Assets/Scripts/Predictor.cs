@@ -82,7 +82,7 @@ public class Predictor : MonoBehaviour
         pyHandle.Arguments = Application.dataPath + "/Externals/cnn-prediction.py " + Application.dataPath + "//cnn-game.hd5 " + Application.dataPath + "//" + imageFile;
         pyHandle.RedirectStandardOutput = true;
 
-        // Perform the traning.
+        // Loads the network
         neuralNetwork = Process.Start(pyHandle);
 
         StreamReader reader = neuralNetwork.StandardOutput;
