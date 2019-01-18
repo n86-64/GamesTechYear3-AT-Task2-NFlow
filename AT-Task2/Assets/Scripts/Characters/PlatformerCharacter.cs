@@ -26,6 +26,7 @@ public class PlatformerCharacter : MonoBehaviour {
     {
         Jump();
         Forward();
+        Rotation();
 	}
 
 
@@ -34,11 +35,17 @@ public class PlatformerCharacter : MonoBehaviour {
     {
         float axisVal = Input.GetAxis("Vertical");
         characterAnimator.SetFloat("Speed", axisVal);
-        characterBody.velocity = gameObject.transform.forward * runSpeed * axisVal;
+        characterBody.velocity = transform.forward * runSpeed * axisVal;
     }
 
     void Jump()
     {
         characterAnimator.SetBool("Jump", Input.GetKeyDown(KeyCode.Space));
+    }
+
+    void Rotation()
+    {
+        float val = Input.GetAxis("Horizontal");
+        gameObject.transform.Rotate(new Vector3(0.0f, val, 0.0f));
     }
 }
