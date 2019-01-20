@@ -55,6 +55,11 @@ public class PlatformerCharacter : MonoBehaviour {
             Forward();
             Rotation();
         }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            health = 0;
+        }
     }
 
 
