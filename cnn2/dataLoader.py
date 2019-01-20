@@ -37,6 +37,8 @@ def loadTraningData(label_names, image_width, image_height):
         path = os.path.join(train_data_path, name + "/")
         images = glob(os.path.join(path, "*.jpg"))
         images += glob(os.path.join(path, "*.jpeg"))
+        images += glob(os.path.join(path, "*.JPG"))
+        images += glob(os.path.join(path, "*.PNG"))
         images += glob(os.path.join(path, "*.png"))
 
         # load the images into the array.
