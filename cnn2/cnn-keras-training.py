@@ -68,13 +68,6 @@ def main():
 
     result = cnn.save("cnn-game.hd5") # Saves the resulting neural network.
 
-    model = tf.keras.models.load_model("cnn-game.hd5")
-
-    test_image = dl.loadPredictionImage(image_path=os.path.join(os.path.dirname(__file__), "test.png"), image_width=50, image_height=50)
-    result = model.predict(test_image)
-
-    print(result)
-
     return
 
 
