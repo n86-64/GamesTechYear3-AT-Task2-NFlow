@@ -13,7 +13,6 @@ public class Predictor : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        //getPredictions("test.jpg");
         loadLabels("labels.txt");
 	}
 
@@ -84,7 +83,6 @@ public class Predictor : MonoBehaviour
 
         // Loads the network
         neuralNetwork = Process.Start(pyHandle);
-
         StreamReader reader = neuralNetwork.StandardOutput;
 
         // Get the output.
