@@ -191,6 +191,7 @@ GameObject:
   - component: {fileID: 439584965}
   - component: {fileID: 439584964}
   - component: {fileID: 439584963}
+  - component: {fileID: 439584967}
   m_Layer: 5
   m_Name: Button (1)
   m_TagString: Untagged
@@ -267,8 +268,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: goBack
+      - m_Target: {fileID: 439584967}
+        m_MethodName: deleteGameGenerator
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+      - m_Target: {fileID: 439584963}
+        m_MethodName: startGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -314,6 +326,17 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 439584961}
   m_CullTransparentMesh: 0
+--- !u!114 &439584967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 439584961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 635cb95cb927f014bb8ac75d057a4ea8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &632957234
 GameObject:
   m_ObjectHideFlags: 0

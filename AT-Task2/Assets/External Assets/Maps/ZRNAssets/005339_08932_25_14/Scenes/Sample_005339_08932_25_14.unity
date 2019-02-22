@@ -10881,16 +10881,6 @@ Prefab:
       propertyPath: m_Name
       value: UnityChan (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 54886970745610452, guid: 253e824f73027224ab0808c66d0a893a,
-        type: 2}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 54886970745610452, guid: 253e824f73027224ab0808c66d0a893a,
-        type: 2}
-      propertyPath: m_Constraints
-      value: 112
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 253e824f73027224ab0808c66d0a893a, type: 2}
   m_IsPrefabAsset: 0
