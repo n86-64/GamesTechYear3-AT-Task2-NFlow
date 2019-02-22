@@ -73,8 +73,15 @@ public class PlatformerCharacter : MonoBehaviour {
 
     void Jump()
     {
-        characterAnimator.SetBool("Jump", Input.GetKeyDown(KeyCode.Space));
-        characterBody.AddForce(new Vector3(0, 100.0f, 0), ForceMode.Impulse);
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            characterAnimator.SetBool("Jump", true);
+            characterBody.AddForce(new Vector3(0, 50.0f, 0), ForceMode.Impulse);
+        }
+        else
+        {
+            characterAnimator.SetBool("Jump", false);
+        }
     }
 
     void Rotation()
