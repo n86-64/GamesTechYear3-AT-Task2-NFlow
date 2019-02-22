@@ -6,5 +6,5 @@ public class GameGenerator : MonoBehaviour
 {
     public string generatedWeapon = "null";
     public string generatedScene = "null";
-    public string generatedVehicle = "null";
+    public string generatedCharacter = "null";
 }

@@ -823,7 +823,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73953fcdd9e4c07488dff55e0371a3a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapLocationValues: []
+  generatorTemplate: {fileID: 114079507204734872, guid: af5bf856142ccde43a840481a82fae3f,
+    type: 2}
+  sceneCategories:
+  - City
+  - Forest
+  characterCategories:
+  - Anime
+  - Scifi
+  - Skeletons
 --- !u!1 &1866075519
 GameObject:
   m_ObjectHideFlags: 0
