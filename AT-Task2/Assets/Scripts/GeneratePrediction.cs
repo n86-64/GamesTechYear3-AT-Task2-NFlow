@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class GeneratePrediction : MonoBehaviour {
 
-    public List<float> mapLocationValues = new List<float>();
-
-
 	// Use this for initialization
-	void Start () {
-		
+	void Start ()
+    {
+        Predictor predictiorEngine = FindObjectOfType<Predictor>();
+        predictiorEngine.predict("image.jpg");
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 		
 	}
 }

@@ -267,7 +267,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1676489683}
+      - m_Target: {fileID: 0}
         m_MethodName: goBack
         m_Mode: 1
         m_Arguments:
@@ -820,9 +820,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1676489680}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1f15979f81be4b4c88d2ad86fa8852b, type: 3}
+  m_Script: {fileID: 11500000, guid: 73953fcdd9e4c07488dff55e0371a3a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapLocationValues: []
 --- !u!1 &1866075519
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ public class Predictor : MonoBehaviour
     public List<float> predictions = new List<float>();
 
 	// Use this for initialization
-	void Start ()
+	void Awake ()
     {
         loadLabels("labels.txt");
 	}
@@ -47,18 +47,24 @@ public class Predictor : MonoBehaviour
         for(int i = 0; i < prediction.Length; i++)
         {
             strCharacter = prediction[i];
-            if(strCharacter != '[' || strCharacter != ']')
+            if(strCharacter != '[' && strCharacter != ']')
             {
-                if (strCharacter != ',')
+                if (strCharacter != ' ')
                 {
                     valueString += strCharacter;
                 }
                 else
                 {
                     predictions[labelIndex] = float.Parse(valueString);
+                    valueString = "";
                     labelIndex++;
                 }
             }
+        }
+
+        if(valueString != "")
+        {
+            predictions[labelIndex] = float.Parse(valueString);
         }
     }
 
@@ -78,12 +84,14 @@ public class Predictor : MonoBehaviour
         pyHandle.UseShellExecute = false;
         pyHandle.FileName = "python.exe";
         pyHandle.WindowStyle = ProcessWindowStyle.Normal;
-        pyHandle.Arguments = Application.dataPath + "/Externals/cnn-prediction.py " + Application.dataPath + "//cnn-game.hd5 " + Application.dataPath + "//" + imageFile;
+        pyHandle.Arguments = Application.dataPath + "/Externals/cnn-prediction.py " + Application.dataPath + "/cnn-game.hd5 " + Application.dataPath + "/" + imageFile;
         pyHandle.RedirectStandardOutput = true;
 
         // Loads the network
         neuralNetwork = Process.Start(pyHandle);
         StreamReader reader = neuralNetwork.StandardOutput;
+
+        neuralNetwork.WaitForExit();
 
         // Get the output.
         return reader.ReadToEnd();
