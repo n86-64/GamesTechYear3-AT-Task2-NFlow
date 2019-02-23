@@ -10,7 +10,7 @@ public class GeneratePrediction : MonoBehaviour {
     public List<string> characterCategories;
 
     // Use this for initialization
-    void Start ()
+    void Awake ()
     {
         predictiorEngine = FindObjectOfType<Predictor>();
         predictiorEngine.predict("image.jpg");
