@@ -13,6 +13,8 @@ public class ScrollTwo : MonoBehaviour
     public GameObject startPos;
     public GameObject endPos;
 
+    public Text textField;
+
     // Use this for initialization
     void Start()
     {
@@ -22,10 +24,12 @@ public class ScrollTwo : MonoBehaviour
         if (characterTexture)
         {
             index = label.FindIndex(x => x == generator.generatedCharacter);
+            textField.text = "An " + generator.generatedCharacter + " character";
         }
         else
         {
             index = label.FindIndex(x => x == generator.generatedScene);
+            textField.text = "Set at a " + generator.generatedScene;
         }
 
         if (index >= 0) { GetComponent<Image>().sprite = Texture[index]; }

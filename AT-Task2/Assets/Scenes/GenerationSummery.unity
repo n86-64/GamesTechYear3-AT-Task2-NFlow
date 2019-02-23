@@ -504,6 +504,7 @@ MonoBehaviour:
   characterTexture: 1
   startPos: {fileID: 1915169737}
   endPos: {fileID: 85982019}
+  textField: {fileID: 1697187719}
 --- !u!114 &458354787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1194,6 +1195,7 @@ MonoBehaviour:
   characterTexture: 0
   startPos: {fileID: 1915169737}
   endPos: {fileID: 85982019}
+  textField: {fileID: 34500892}
 --- !u!114 &1285926783
 MonoBehaviour:
   m_ObjectHideFlags: 0
