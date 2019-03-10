@@ -24,7 +24,7 @@ public class GeneratePrediction : MonoBehaviour {
         GameGenerator generator = Instantiate(generatorTemplate);
         DontDestroyOnLoad(generator);
         int searchIndex = 0;
-        int bestResult = 0;
+        int bestResult = -1;
 
         // Generate Scene prediction.
         for(int i = 0; i < predictiorEngine.predictions.Count; i++)
@@ -42,7 +42,11 @@ public class GeneratePrediction : MonoBehaviour {
 
             if(searchIndex >= sceneCategories.Count) { break; }
         }
-        generator.generatedScene = predictiorEngine.labels[bestResult];
+
+        if(bestResult != -1)
+        {
+            generator.generatedScene = predictiorEngine.labels[bestResult];
+        }
 
         bestResult = 0;
         bestPresiction = 0.0f;
@@ -65,6 +69,9 @@ public class GeneratePrediction : MonoBehaviour {
             if (searchIndex >= characterCategories.Count) { break; }
         }
 
-        generator.generatedCharacter = predictiorEngine.labels[bestResult];
+        if (bestResult != -1)
+        {
+            generator.generatedCharacter = predictiorEngine.labels[bestResult];
+        }
     }
 }

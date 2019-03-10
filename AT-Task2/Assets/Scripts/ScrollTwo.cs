@@ -24,12 +24,18 @@ public class ScrollTwo : MonoBehaviour
         if (characterTexture)
         {
             index = label.FindIndex(x => x == generator.generatedCharacter);
-            textField.text = "An " + generator.generatedCharacter + " character";
+            if (index != -1)
+            {
+                textField.text = "An " + generator.generatedCharacter + " character";
+            }
         }
         else
         {
             index = label.FindIndex(x => x == generator.generatedScene);
-            textField.text = "Set at a " + generator.generatedScene;
+            if(index != -1)
+            {
+                textField.text = "Set at a " + generator.generatedScene;
+            }
         }
 
         if (index >= 0) { GetComponent<Image>().sprite = Texture[index]; }
