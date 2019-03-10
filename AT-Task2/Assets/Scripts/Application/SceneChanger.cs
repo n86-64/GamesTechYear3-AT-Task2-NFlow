@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
+    public List<string> labels;
+    public List<string> sceneNames;
+
     public void quitApplication()
     {
         Application.Quit();
@@ -18,9 +21,17 @@ public class SceneChanger : MonoBehaviour
 
     public void startLevel()
     {
-        // Here the map should be chosen acording to the generated scene.
+        GameGenerator generator = FindObjectOfType<GameGenerator>();
+        string sceneName = "Game Scene";
 
-        SceneManager.LoadScene("Game Scene");
+        // Here the map should be chosen acording to the generated scene.
+        if (generator.generatedScene != "null")
+        {
+            int index = labels.FindIndex(x => x == generator.generatedScene);
+            sceneName = sceneNames[index];
+        }
+
+        SceneManager.LoadScene(sceneName);
     }
 
     public void backToMenu()

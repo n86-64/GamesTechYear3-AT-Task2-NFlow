@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GeneratorScene.unity
     guid: d33745c7d81e142438dfb5924b275b0f
+  - enabled: 1
+    path: Assets/External Assets/Handpainted Forest Environment Free Sample/Scenes/demoScene_free.unity
+    guid: 7769f33fb4fa2e5458344a36556ad760
   m_configObjects: {}
