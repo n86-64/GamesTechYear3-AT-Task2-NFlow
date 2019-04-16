@@ -13,7 +13,7 @@ public class SpawnCharacter : MonoBehaviour {
         GameGenerator generator = FindObjectOfType<GameGenerator>();
         int characterToSpawn = 0;
 
-        characterToSpawn = label.FindIndex(x => x == generator.generatedCharacter);
+        characterToSpawn = System.Math.Max(0, label.FindIndex(x => x == generator.generatedCharacter));
         Instantiate(characterPrefabs[characterToSpawn], gameObject.transform.position, Quaternion.Euler(Vector3.zero));
     }
 	

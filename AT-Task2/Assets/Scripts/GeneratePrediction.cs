@@ -48,7 +48,7 @@ public class GeneratePrediction : MonoBehaviour {
             generator.generatedScene = predictiorEngine.labels[bestResult];
         }
 
-        bestResult = 0;
+        bestResult = -1;
         bestPresiction = 0.0f;
         searchIndex = 0;
 

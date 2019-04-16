@@ -12,6 +12,7 @@ public class PlatformerCharacter : MonoBehaviour {
 
     public GameObject viewTarget;
     public float runSpeed = 10.0f;
+    public float jumpHeight = 20.0f;
 
 	// Use this for initialization
 	void Start ()
@@ -51,8 +52,8 @@ public class PlatformerCharacter : MonoBehaviour {
         else
         {
 
-            Jump();
             Forward();
+            Jump();
             Rotation();
         }
 
@@ -76,7 +77,7 @@ public class PlatformerCharacter : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             characterAnimator.SetBool("Jump", true);
-            characterBody.AddForce(new Vector3(0, 50.0f, 0), ForceMode.Impulse);
+            characterBody.velocity += new Vector3(0.0f, jumpHeight, 0.0f);
         }
         else
         {
