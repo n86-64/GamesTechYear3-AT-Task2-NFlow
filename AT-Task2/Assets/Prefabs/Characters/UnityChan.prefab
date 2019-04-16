@@ -5209,6 +5209,7 @@ MonoBehaviour:
   health: 100
   viewTarget: {fileID: 1289938718026904}
   runSpeed: 10
+  jumpHeight: 20
 --- !u!114 &114242126527037476
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5286,7 +5287,7 @@ CapsuleCollider:
   m_Radius: 0.44
   m_Height: 2.09
   m_Direction: 1
-  m_Center: {x: 0, y: 1.02, z: 0}
+  m_Center: {x: 0, y: 0.95, z: 0}
 --- !u!137 &137010179916672900
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
