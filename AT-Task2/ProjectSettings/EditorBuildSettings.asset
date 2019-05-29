@@ -6,6 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/Main Menu.unity
+    guid: 45188fa5a78ea8543bd7464ccbc53e48
+  - enabled: 1
+    path: Assets/Viuletti City low poly/DemoScene/CityMap.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/GenerationSummery.unity
+    guid: f5ecc9e3da7ff5f4cb565c019db849c7
+  - enabled: 1
+    path: Assets/Scenes/Game Scene.unity
+    guid: b7f1dbd25fd615b4c99eaf7455fd7193
+  - enabled: 1
+    path: Assets/Scenes/GeneratorScene.unity
+    guid: d33745c7d81e142438dfb5924b275b0f
+  - enabled: 1
+    path: Assets/External Assets/Handpainted Forest Environment Free Sample/Scenes/demoScene_free.unity
+    guid: 7769f33fb4fa2e5458344a36556ad760
   m_configObjects: {}
